@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace EnviosMails
 {
-    public partial class Form1 : Form
+    public partial class FormEnvio : Form
     {
-        public Form1()
+        public FormEnvio()
         {
             InitializeComponent();
         }
+
+   
     }
 }
