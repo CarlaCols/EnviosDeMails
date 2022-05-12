@@ -37,13 +37,13 @@ namespace EnviosMails
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnImportar = new System.Windows.Forms.Button();
+            this.dataDetalles = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataDetalles = new System.Windows.Forms.DataGridView();
-            this.btnImportar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -74,7 +74,7 @@ namespace EnviosMails
             this.tabPage1.Size = new System.Drawing.Size(792, 421);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Login";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.UseVisualStyleBackColor = true;            
             // 
             // button1
             // 
@@ -134,6 +134,30 @@ namespace EnviosMails
             this.tabPage2.Text = "Mensaje Nuevo";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnImportar
+            // 
+            this.btnImportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportar.Image = global::EnviosMails.Properties.Resources.Search;
+            this.btnImportar.Location = new System.Drawing.Point(751, 116);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(33, 33);
+            this.btnImportar.TabIndex = 7;
+            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
+            // 
+            // dataDetalles
+            // 
+            this.dataDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataDetalles.Location = new System.Drawing.Point(58, 116);
+            this.dataDetalles.Name = "dataDetalles";
+            this.dataDetalles.RowHeadersWidth = 51;
+            this.dataDetalles.RowTemplate.Height = 24;
+            this.dataDetalles.Size = new System.Drawing.Size(683, 234);
+            this.dataDetalles.TabIndex = 6;
+            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -186,30 +210,6 @@ namespace EnviosMails
             this.label4.Size = new System.Drawing.Size(26, 17);
             this.label4.TabIndex = 1;
             this.label4.Text = "CC";
-            // 
-            // dataDetalles
-            // 
-            this.dataDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDetalles.Location = new System.Drawing.Point(58, 116);
-            this.dataDetalles.Name = "dataDetalles";
-            this.dataDetalles.RowHeadersWidth = 51;
-            this.dataDetalles.RowTemplate.Height = 24;
-            this.dataDetalles.Size = new System.Drawing.Size(683, 234);
-            this.dataDetalles.TabIndex = 6;
-            // 
-            // btnImportar
-            // 
-            this.btnImportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportar.Image = global::EnviosMails.Properties.Resources.Search;
-            this.btnImportar.Location = new System.Drawing.Point(751, 116);
-            this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(33, 33);
-            this.btnImportar.TabIndex = 7;
-            this.btnImportar.UseVisualStyleBackColor = true;
-            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // FormEnvio
             // 
