@@ -16,7 +16,7 @@ namespace EnviosMails
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormEnvio());
+            Application.Run(new FormSendMail());
         }
     }
 }

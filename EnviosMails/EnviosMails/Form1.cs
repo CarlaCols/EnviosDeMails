@@ -1,72 +1,45 @@
-﻿using ExcelDataReader;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
-
+using System.Diagnostics;
 namespace EnviosMails
 {
-    public partial class FormEnvio : Form
+    public partial class FormSendMail : Form
     {
-        public FormEnvio()
+        public FormSendMail()
         {
             InitializeComponent();
+
+            //Oculta la pestaña Iniciar Sesion (tabPage1) del Tabcontrol
+            tabPage1.Parent = null;
         }
 
 
-        private void btnImportar_Click(object sender, EventArgs e)
+        private void btnSearchFile_Click(object sender, EventArgs e)
         {
-            DataSet ds;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                Filter = "Excel | *.xls;*.xlsx;*.xlsm;*.csv;",
-                ValidateNames = true,
-                Title = "Seleccionar Archivo"
-            })
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    FileStream fileStream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read);
-                    IExcelDataReader reader;
+            //Se instancia la Clase SearchFile
+            SearchFile searchFile = new SearchFile();
+            // se hace pase de parametro de clase SearchFile a dataDetails
+            searchFile.btnSearchFile_Click(dataDetails);
+        }
 
+        private void linkIniciarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //Si el link es presionado "true"
+            linkIniciarSesion.LinkVisited = true;
 
+            //Habilita la pestaña Iniciar Sesion (tabPage1) del Tabcontrol  
+            if (tabPage1.Parent == null)
+            {                                             
+                tabControl1.TabPages.Add(tabPage1);            
+                //selecciona como principal la pestaña Iniciar Sesion(tabPage1)
+                tabControl1.SelectTab(tabPage1);
+            }
+        }
 
-                    string getExtension = openFileDialog.SafeFileName.Substring(openFileDialog.SafeFileName.LastIndexOf('.') + 1);
-
-                    if (getExtension == "csv")
-                    {
-                        reader = ExcelReaderFactory.CreateCsvReader(fileStream);
-                    }
-                    else
-                    {
-                        reader = ExcelReaderFactory.CreateReader(fileStream);
-                    }
-
-
-
-                    //// reader.IsFirstRowAsColumnNames
-                    var conf = new ExcelDataSetConfiguration
-                    {
-                        ConfigureDataTable = _ => new ExcelDataTableConfiguration
-                        {
-                            UseHeaderRow = true
-                        }
-                    };
-
-                    var dataSet = reader.AsDataSet(conf);
-
-                    // Now you can get data from each sheet by its index or its "name"
-                    var dataTable = dataSet.Tables[0];
-                    dataDetalles.DataSource = dataSet.Tables[0];
-                }
-            };
+        private void linkCancel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //Cancela-Cierra tabPage1 inicio de Sesion
+            tabControl1.TabPages.Remove(tabPage1);
         }
     }
 }
