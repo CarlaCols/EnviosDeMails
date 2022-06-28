@@ -29,28 +29,30 @@ namespace EnviosMails
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.linkIniciarSesion = new System.Windows.Forms.LinkLabel();
             this.btnSearchFile = new System.Windows.Forms.Button();
             this.dataDetails = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnEnviar = new System.Windows.Forms.Button();
+            this.txtCCO = new System.Windows.Forms.TextBox();
+            this.txtCC = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkCancel = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDetails)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -66,12 +68,11 @@ namespace EnviosMails
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.linkIniciarSesion);
             this.tabPage2.Controls.Add(this.btnSearchFile);
             this.tabPage2.Controls.Add(this.dataDetails);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.btnEnviar);
+            this.tabPage2.Controls.Add(this.txtCCO);
+            this.tabPage2.Controls.Add(this.txtCC);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -81,17 +82,6 @@ namespace EnviosMails
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Lista de Devoluciones";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // linkIniciarSesion
-            // 
-            this.linkIniciarSesion.AutoSize = true;
-            this.linkIniciarSesion.Location = new System.Drawing.Point(692, 3);
-            this.linkIniciarSesion.Name = "linkIniciarSesion";
-            this.linkIniciarSesion.Size = new System.Drawing.Size(92, 17);
-            this.linkIniciarSesion.TabIndex = 9;
-            this.linkIniciarSesion.TabStop = true;
-            this.linkIniciarSesion.Text = "Iniciar Sesión";
-            this.linkIniciarSesion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkIniciarSesion_LinkClicked);
             // 
             // btnSearchFile
             // 
@@ -118,37 +108,38 @@ namespace EnviosMails
             this.dataDetails.Size = new System.Drawing.Size(683, 234);
             this.dataDetails.TabIndex = 6;
             // 
-            // button2
+            // btnEnviar
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button2.Location = new System.Drawing.Point(350, 356);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 43);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Enviar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEnviar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnEnviar.Location = new System.Drawing.Point(350, 356);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(75, 43);
+            this.btnEnviar.TabIndex = 5;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
-            // textBox4
+            // txtCCO
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtCCO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(154, 68);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(486, 22);
-            this.textBox4.TabIndex = 4;
+            this.txtCCO.Location = new System.Drawing.Point(154, 68);
+            this.txtCCO.Multiline = true;
+            this.txtCCO.Name = "txtCCO";
+            this.txtCCO.Size = new System.Drawing.Size(486, 22);
+            this.txtCCO.TabIndex = 4;
             // 
-            // textBox3
+            // txtCC
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(154, 36);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(486, 22);
-            this.textBox3.TabIndex = 3;
+            this.txtCC.Location = new System.Drawing.Point(154, 36);
+            this.txtCC.Multiline = true;
+            this.txtCC.Name = "txtCC";
+            this.txtCC.Size = new System.Drawing.Size(486, 22);
+            this.txtCC.TabIndex = 3;
             // 
             // label5
             // 
@@ -174,9 +165,9 @@ namespace EnviosMails
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.linkCancel);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.btnSave);
+            this.tabPage1.Controls.Add(this.txtPassword);
+            this.tabPage1.Controls.Add(this.txtUser);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -196,30 +187,31 @@ namespace EnviosMails
             this.linkCancel.TabIndex = 5;
             this.linkCancel.TabStop = true;
             this.linkCancel.Text = "Cancelar";
-            this.linkCancel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCancel_LinkClicked);
+            this.linkCancel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_Cancel);
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(347, 214);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Iniciar Sesion";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(358, 219);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(127, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Aceptar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(317, 165);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 22);
-            this.textBox2.TabIndex = 3;
+            this.txtPassword.Location = new System.Drawing.Point(317, 165);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(212, 22);
+            this.txtPassword.TabIndex = 3;
             // 
-            // textBox1
+            // txtUser
             // 
-            this.textBox1.Location = new System.Drawing.Point(317, 137);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtUser.Location = new System.Drawing.Point(317, 137);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(212, 22);
+            this.txtUser.TabIndex = 2;
             // 
             // label2
             // 
@@ -239,6 +231,10 @@ namespace EnviosMails
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FormSendMail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -254,6 +250,7 @@ namespace EnviosMails
             ((System.ComponentModel.ISupportInitialize)(this.dataDetails)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,22 +259,22 @@ namespace EnviosMails
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCCO;
+        private System.Windows.Forms.TextBox txtCC;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnSearchFile;
         private System.Windows.Forms.DataGridView dataDetails;
-        private System.Windows.Forms.LinkLabel linkIniciarSesion;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.LinkLabel linkCancel;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
 

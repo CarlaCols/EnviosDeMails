@@ -8,7 +8,7 @@ namespace EnviosMails
 {
     public class SearchFile 
     {
-        public void btnSearchFile_Click(DataGridView dataGrid)
+        public void SearchFiles (DataGridView dataGrid)
         {
             DataSet ds;
             using (OpenFileDialog openFileDialog = new OpenFileDialog()
