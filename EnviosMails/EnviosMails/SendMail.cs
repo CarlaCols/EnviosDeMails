@@ -7,7 +7,7 @@ namespace EnviosMails
 {
     class SendMail
     {
-        public void sendMail(Button button,string mailUser,string mailPass, string mailCc)
+        public void sendMail(Button button,EmailBody emailBody)
         {
             string server = "smtp.office365.com";
             int port = 587;
@@ -18,38 +18,57 @@ namespace EnviosMails
             //Se crea el Mensaje
             MimeMessage message = new MimeMessage();
             
-                //Se indica desde donde se esta enviando
-                message.From.Add(MailboxAddress.Parse(mailUser));
+            //Indica de que buzon se esta enviando el mail  (DE:)
+            message.From.Add(MailboxAddress.Parse(emailBody.mailUser));
 
-                //Se indica a donde se esta enviando
-                message.To.Add(MailboxAddress.Parse("ina_987@hotmail.com"));
+            //Indica a que buzon se esta enviando el mail (PARA:)
+            message.To.Add(MailboxAddress.Parse(emailBody.To));
 
-                //Se indica Quien estaq en Copia Cc
-                if (mailCc != string.Empty)
-                {
-                message.Cc.Add(MailboxAddress.Parse(mailCc));
-                }               
+            //Indica a que buzon se es enviand que esta en Copia (Cc)
+            if (emailBody.mailCc != string.Empty)
+            {
+                message.Cc.Add(MailboxAddress.Parse(emailBody.mailCc));
+            }
 
-                //Asunto del Mail
-                message.Subject = "Confirmacion de Tickets";
+            //Indica a que buzon se esta enviando el mail en Copia Oculta Cco(message.Bcc)
+            if (emailBody.mailCco != string.Empty)
+            {
+                message.Bcc.Add(MailboxAddress.Parse(emailBody.mailCco));
+            }
+          
+            //Asunto del Mail
+            message.Subject = "Confirmacion de Tickets";
 
-                //Cuerpo del mail
-                BodyBuilder messageBody = new BodyBuilder();
+            //Cuerpo del mail
+            BodyBuilder messageBody = new BodyBuilder();
+            
+            messageBody.HtmlBody = @"Estimados, "+
+            "<p>El sector interviniente informa que los siguientes tickets se encuentran resueltos, aguardamos su confirmacion para proceder al cierre de los mismos." +
 
-                messageBody.HtmlBody = "Estimados, " +
-                    "<p>El sector interviniente informa que los siguientes tickets se encuentran resueltos," +
-                    " aguardamos su confirmacion para proceder al cierre de los mismos.";
+            "<table border=0 width=1200> " +
+                "<tr style='background-color:#0072C6;color:white;' >" +
+                    "<th>Mail</th>" +
+                    "<th>Abierto Por</th>" +
+                    "<th>Ticket </th>" +
+                    "<th>Titulo</th> " +
+                "</tr>" +
+                    "<td align=center>" + emailBody.To+ "</td>" +
+                    "<td align=center>" + emailBody.IdInteraction+"</td>" +
+                    "<td align=center>" + emailBody.Message+"</td> " +
+                    "<td align=center>" + emailBody.Title + "</td> " +
+                 "</tr>" +
+            "</table>" ;
 
-                message.Body = messageBody.ToMessageBody();
+            message.Body = messageBody.ToMessageBody();
 
-                //Envio del mail
-                SmtpClient clientSmtp = new SmtpClient();
+            //Envio del mail
+            SmtpClient clientSmtp = new SmtpClient();
 
                 try
                 {
                     clientSmtp.CheckCertificateRevocation = false;
                     clientSmtp.Connect(server, port, MailKit.Security.SecureSocketOptions.StartTls);
-                    clientSmtp.Authenticate(mailUser, mailPass);
+                    clientSmtp.Authenticate(emailBody.mailUser,emailBody.mailPass);
                     clientSmtp.Send(message);
                     MessageBox.Show("Mensajes Enviado");
                 }
@@ -62,10 +81,8 @@ namespace EnviosMails
                 {
                     clientSmtp.Disconnect(true);
                     clientSmtp.Dispose();
-                }
-               
-            
-           
+                }             
+                       
         }
     }
 }

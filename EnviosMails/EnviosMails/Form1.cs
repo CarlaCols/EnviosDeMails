@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace EnviosMails
 {
     public partial class FormSendMail : Form
     {
-        public string mailUser { get; set; }
-        public string mailPass { get; set; }
-        public string mailCc { get; set; }
-
+        EmailBody emailBody = new EmailBody();       
         public FormSendMail()
         {
             InitializeComponent();
@@ -22,8 +19,8 @@ namespace EnviosMails
         {
             //Se instancia la Clase SearchFile
             SearchFile searchFile = new SearchFile();
-            // se hace pase de parametro de clase SearchFile a dataDetails
-            searchFile.SearchFiles(dataDetails); 
+            // se hace pase de parametro de clase SearchFile(dataGrid) a dataDetails
+            searchFile.SearchFiles(dataDetails);           
         }
 
         private void link_Cancel(object sender, LinkLabelLinkClickedEventArgs e)
@@ -34,7 +31,6 @@ namespace EnviosMails
             //Cancela-Cierra tabPage1 inicio de Sesion
             tabControl1.TabPages.Remove(tabPage1);
         }              
-
         public void btnSave_Click(object sender, EventArgs e)
         {
             //Se validan que no esten null los txt
@@ -45,7 +41,7 @@ namespace EnviosMails
             }
             else
             {
-                mailUser = txtUser.Text ;
+                emailBody.mailUser = txtUser.Text ;
                 errorProvider.Clear();                
             }
 
@@ -55,7 +51,7 @@ namespace EnviosMails
             }
             else
             {          
-                mailPass = txtPassword.Text;
+                emailBody.mailPass = txtPassword.Text;
                 errorProvider.Clear();
             }
 
@@ -67,14 +63,23 @@ namespace EnviosMails
                 txtPassword.Text = "";
             }  
         }
-        private void btnEnviar_Click(object sender, EventArgs e)
-        {           
-            mailCc = txtCC.Text;
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            emailBody.mailCc = txtCC.Text;
+            emailBody.mailCco = txtCCO.Text;
 
-            if (mailUser != null && mailPass != null)
+            if (emailBody.mailUser != null && emailBody.mailPass != null)
             {
                 SendMail send = new SendMail();
-                send.sendMail(btnEnviar, mailUser, mailPass, mailCc);
+                for (int i = 0; i < dataDetails.RowCount; i++)
+                {
+                    emailBody.To = dataDetails.Rows[i].Cells[0].Value.ToString() + "@gmail.com";                    
+                    emailBody.IdInteraction = dataDetails.Rows[i].Cells[1].Value.ToString();
+                    emailBody.Message = dataDetails.Rows[i].Cells[2].Value.ToString();
+                    emailBody.Title = dataDetails.Rows[i].Cells[3].Value.ToString();
+                    send.sendMail(btnSend, emailBody);
+                }
+               
             }
             else
             {   
@@ -88,5 +93,6 @@ namespace EnviosMails
                 }
             }
         }
+               
     }
 }

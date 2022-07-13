@@ -51,6 +51,9 @@ namespace EnviosMails
                     // obtener datos de cada hoja por su índice o su "nombre"
                     var dataTable = dataSet.Tables[0];
                     dataGrid.DataSource = dataSet.Tables[0];
+                    //Ordena alfabeicamente
+                    dataGrid.Sort(dataGrid.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+
                 }
             };
         }
