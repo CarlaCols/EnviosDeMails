@@ -51,8 +51,22 @@ namespace EnviosMails
                     // obtener datos de cada hoja por su índice o su "nombre"
                     var dataTable = dataSet.Tables[0];
                     dataGrid.DataSource = dataSet.Tables[0];
-                    //Ordena alfabeicamente
+                    //Ordena alfabeicamente las Filas
                     dataGrid.Sort(dataGrid.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+
+                    //string CellDuplicated = dataGrid.Rows[0].Cells[0].Value.ToString();
+
+                    //for (int i = 1; i < dataGrid.Rows.Count; i++)
+                    //{
+                    //    if (dataGrid.Rows[i].Cells[0].Value.ToString() == CellDuplicated)
+                    //    {
+                    //        dataGrid.Rows[i].Cells[0].Value = string.Empty;
+                    //    }
+                    //    else
+                    //    {
+                    //        CellDuplicated = dataGrid.Rows[i].Cells[0].Value.ToString();
+                    //    }
+                    //}
 
                 }
             };

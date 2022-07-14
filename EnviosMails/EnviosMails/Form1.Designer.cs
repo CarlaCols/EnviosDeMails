@@ -35,6 +35,10 @@ namespace EnviosMails
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.btnSearchFile = new System.Windows.Forms.Button();
             this.dataDetails = new System.Windows.Forms.DataGridView();
             this.btnSend = new System.Windows.Forms.Button();
@@ -45,8 +49,8 @@ namespace EnviosMails
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkCancel = new System.Windows.Forms.LinkLabel();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPassword2 = new System.Windows.Forms.TextBox();
+            this.txtUser2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -71,6 +75,10 @@ namespace EnviosMails
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtPassword);
+            this.tabPage2.Controls.Add(this.txtUser);
+            this.tabPage2.Controls.Add(this.lblPassword);
+            this.tabPage2.Controls.Add(this.lblUser);
             this.tabPage2.Controls.Add(this.btnSearchFile);
             this.tabPage2.Controls.Add(this.dataDetails);
             this.tabPage2.Controls.Add(this.btnSend);
@@ -83,14 +91,48 @@ namespace EnviosMails
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(792, 421);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Lista de Devoluciones";
+            this.tabPage2.Text = "Confirmacion de Tickets";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(479, 18);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(181, 22);
+            this.txtPassword.TabIndex = 11;
+            this.txtPassword.Text = "Correo10515304";
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(174, 18);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(174, 22);
+            this.txtUser.TabIndex = 10;
+            this.txtUser.Text = "c-cols@hotmail.com";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(392, 21);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(81, 17);
+            this.lblPassword.TabIndex = 9;
+            this.lblPassword.Text = "Contraseña";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(111, 18);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(57, 17);
+            this.lblUser.TabIndex = 8;
+            this.lblUser.Text = "Usuario";
             // 
             // btnSearchFile
             // 
             this.btnSearchFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchFile.Image = global::EnviosMails.Properties.Resources.Search;
-            this.btnSearchFile.Location = new System.Drawing.Point(751, 116);
+            this.btnSearchFile.Location = new System.Drawing.Point(745, 116);
             this.btnSearchFile.Name = "btnSearchFile";
             this.btnSearchFile.Size = new System.Drawing.Size(33, 33);
             this.btnSearchFile.TabIndex = 7;
@@ -115,7 +157,7 @@ namespace EnviosMails
             this.dataDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataDetails.ColumnHeadersHeight = 29;
             this.dataDetails.EnableHeadersVisualStyles = false;
-            this.dataDetails.Location = new System.Drawing.Point(58, 116);
+            this.dataDetails.Location = new System.Drawing.Point(44, 116);
             this.dataDetails.Name = "dataDetails";
             this.dataDetails.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -134,13 +176,13 @@ namespace EnviosMails
             this.dataDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataDetails.RowTemplate.Height = 24;
             this.dataDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataDetails.Size = new System.Drawing.Size(683, 234);
+            this.dataDetails.Size = new System.Drawing.Size(683, 248);
             this.dataDetails.TabIndex = 6;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnSend.Location = new System.Drawing.Point(350, 356);
+            this.btnSend.Location = new System.Drawing.Point(349, 370);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 43);
             this.btnSend.TabIndex = 5;
@@ -153,7 +195,7 @@ namespace EnviosMails
             this.txtCCO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCCO.Location = new System.Drawing.Point(154, 68);
+            this.txtCCO.Location = new System.Drawing.Point(174, 88);
             this.txtCCO.Multiline = true;
             this.txtCCO.Name = "txtCCO";
             this.txtCCO.Size = new System.Drawing.Size(486, 22);
@@ -164,7 +206,7 @@ namespace EnviosMails
             this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCC.Location = new System.Drawing.Point(154, 36);
+            this.txtCC.Location = new System.Drawing.Point(174, 56);
             this.txtCC.Multiline = true;
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(486, 22);
@@ -173,7 +215,7 @@ namespace EnviosMails
             // lblCco
             // 
             this.lblCco.AutoSize = true;
-            this.lblCco.Location = new System.Drawing.Point(108, 71);
+            this.lblCco.Location = new System.Drawing.Point(131, 88);
             this.lblCco.Name = "lblCco";
             this.lblCco.Size = new System.Drawing.Size(37, 17);
             this.lblCco.TabIndex = 2;
@@ -185,7 +227,7 @@ namespace EnviosMails
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCc.AutoSize = true;
-            this.lblCc.Location = new System.Drawing.Point(108, 39);
+            this.lblCc.Location = new System.Drawing.Point(131, 59);
             this.lblCc.Name = "lblCc";
             this.lblCc.Size = new System.Drawing.Size(26, 17);
             this.lblCc.TabIndex = 1;
@@ -195,8 +237,8 @@ namespace EnviosMails
             // 
             this.tabPage1.Controls.Add(this.linkCancel);
             this.tabPage1.Controls.Add(this.btnSave);
-            this.tabPage1.Controls.Add(this.txtPassword);
-            this.tabPage1.Controls.Add(this.txtUser);
+            this.tabPage1.Controls.Add(this.txtPassword2);
+            this.tabPage1.Controls.Add(this.txtUser2);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -228,19 +270,19 @@ namespace EnviosMails
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtPassword
+            // txtPassword2
             // 
-            this.txtPassword.Location = new System.Drawing.Point(317, 165);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(212, 22);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword2.Location = new System.Drawing.Point(317, 165);
+            this.txtPassword2.Name = "txtPassword2";
+            this.txtPassword2.Size = new System.Drawing.Size(212, 22);
+            this.txtPassword2.TabIndex = 3;
             // 
-            // txtUser
+            // txtUser2
             // 
-            this.txtUser.Location = new System.Drawing.Point(317, 137);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(212, 22);
-            this.txtUser.TabIndex = 2;
+            this.txtUser2.Location = new System.Drawing.Point(317, 137);
+            this.txtUser2.Name = "txtUser2";
+            this.txtUser2.Size = new System.Drawing.Size(212, 22);
+            this.txtUser2.TabIndex = 2;
             // 
             // label2
             // 
@@ -288,8 +330,8 @@ namespace EnviosMails
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtPassword2;
+        private System.Windows.Forms.TextBox txtUser2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -304,6 +346,10 @@ namespace EnviosMails
         private System.Windows.Forms.LinkLabel linkCancel;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DataGridView dataDetails;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblUser;
     }
 }
 
