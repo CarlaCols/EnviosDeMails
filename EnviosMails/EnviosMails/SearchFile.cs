@@ -54,19 +54,21 @@ namespace EnviosMails
                     //Ordena alfabeicamente las Filas
                     dataGrid.Sort(dataGrid.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
 
-                    //string CellDuplicated = dataGrid.Rows[0].Cells[0].Value.ToString();
+                    //Impide se ordene Encabezado, columnas o filas
 
-                    //for (int i = 1; i < dataGrid.Rows.Count; i++)
-                    //{
-                    //    if (dataGrid.Rows[i].Cells[0].Value.ToString() == CellDuplicated)
-                    //    {
-                    //        dataGrid.Rows[i].Cells[0].Value = string.Empty;
-                    //    }
-                    //    else
-                    //    {
-                    //        CellDuplicated = dataGrid.Rows[i].Cells[0].Value.ToString();
-                    //    }
-                    //}
+                    //dataGrid.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    //dataGrid.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    //dataGrid.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    //dataGrid.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                    foreach (DataGridViewColumn column in dataGrid.Columns)//deshabilitar el click y  reordenamiento por columnas
+                    {
+                        column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    }
+
+
+
+
 
                 }
             };

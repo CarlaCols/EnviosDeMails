@@ -30,9 +30,9 @@ namespace EnviosMails
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -70,7 +70,7 @@ namespace EnviosMails
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 450);
+            this.tabControl1.Size = new System.Drawing.Size(800, 493);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
@@ -89,13 +89,15 @@ namespace EnviosMails
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 421);
+            this.tabPage2.Size = new System.Drawing.Size(792, 464);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Confirmacion de Tickets";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // txtPassword
             // 
+            this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPassword.ForeColor = System.Drawing.SystemColors.Window;
             this.txtPassword.Location = new System.Drawing.Point(479, 18);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(181, 22);
@@ -104,6 +106,7 @@ namespace EnviosMails
             // 
             // txtUser
             // 
+            this.txtUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtUser.Location = new System.Drawing.Point(174, 18);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(174, 22);
@@ -112,6 +115,7 @@ namespace EnviosMails
             // 
             // lblPassword
             // 
+            this.lblPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(392, 21);
             this.lblPassword.Name = "lblPassword";
@@ -121,6 +125,7 @@ namespace EnviosMails
             // 
             // lblUser
             // 
+            this.lblUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblUser.AutoSize = true;
             this.lblUser.Location = new System.Drawing.Point(111, 18);
             this.lblUser.Name = "lblUser";
@@ -130,9 +135,9 @@ namespace EnviosMails
             // 
             // btnSearchFile
             // 
-            this.btnSearchFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchFile.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSearchFile.Image = global::EnviosMails.Properties.Resources.Search;
-            this.btnSearchFile.Location = new System.Drawing.Point(745, 116);
+            this.btnSearchFile.Location = new System.Drawing.Point(735, 185);
             this.btnSearchFile.Name = "btnSearchFile";
             this.btnSearchFile.Size = new System.Drawing.Size(33, 33);
             this.btnSearchFile.TabIndex = 7;
@@ -143,46 +148,49 @@ namespace EnviosMails
             // 
             this.dataDetails.AllowUserToAddRows = false;
             this.dataDetails.AllowUserToDeleteRows = false;
-            this.dataDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataDetails.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataDetails.ColumnHeadersHeight = 29;
             this.dataDetails.EnableHeadersVisualStyles = false;
-            this.dataDetails.Location = new System.Drawing.Point(44, 116);
+            this.dataDetails.Location = new System.Drawing.Point(46, 133);
             this.dataDetails.Name = "dataDetails";
             this.dataDetails.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataDetails.RowHeadersVisible = false;
             this.dataDetails.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dataDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.dataDetails.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataDetails.RowTemplate.Height = 24;
             this.dataDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataDetails.Size = new System.Drawing.Size(683, 248);
+            this.dataDetails.Size = new System.Drawing.Size(683, 260);
             this.dataDetails.TabIndex = 6;
             // 
             // btnSend
             // 
-            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnSend.Location = new System.Drawing.Point(349, 370);
+            this.btnSend.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSend.Location = new System.Drawing.Point(351, 399);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 43);
             this.btnSend.TabIndex = 5;
@@ -192,9 +200,7 @@ namespace EnviosMails
             // 
             // txtCCO
             // 
-            this.txtCCO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCCO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCCO.Location = new System.Drawing.Point(174, 88);
             this.txtCCO.Multiline = true;
             this.txtCCO.Name = "txtCCO";
@@ -203,9 +209,7 @@ namespace EnviosMails
             // 
             // txtCC
             // 
-            this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCC.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCC.Location = new System.Drawing.Point(174, 56);
             this.txtCC.Multiline = true;
             this.txtCC.Name = "txtCC";
@@ -214,6 +218,7 @@ namespace EnviosMails
             // 
             // lblCco
             // 
+            this.lblCco.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCco.AutoSize = true;
             this.lblCco.Location = new System.Drawing.Point(131, 88);
             this.lblCco.Name = "lblCco";
@@ -223,9 +228,7 @@ namespace EnviosMails
             // 
             // lblCc
             // 
-            this.lblCc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCc.AutoSize = true;
             this.lblCc.Location = new System.Drawing.Point(131, 59);
             this.lblCc.Name = "lblCc";
@@ -244,7 +247,7 @@ namespace EnviosMails
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 421);
+            this.tabPage1.Size = new System.Drawing.Size(792, 464);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Iniciar Sesion";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -310,11 +313,12 @@ namespace EnviosMails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 493);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormSendMail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -334,22 +338,22 @@ namespace EnviosMails
         private System.Windows.Forms.TextBox txtUser2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label lblCc;
-        private System.Windows.Forms.TextBox txtCCO;
-        private System.Windows.Forms.TextBox txtCC;
-        private System.Windows.Forms.Label lblCco;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Button btnSearchFile;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.LinkLabel linkCancel;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.DataGridView dataDetails;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btnSearchFile;
+        private System.Windows.Forms.DataGridView dataDetails;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TextBox txtCCO;
+        private System.Windows.Forms.TextBox txtCC;
+        private System.Windows.Forms.Label lblCco;
+        private System.Windows.Forms.Label lblCc;
     }
 }
 
