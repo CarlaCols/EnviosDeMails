@@ -12,68 +12,28 @@ namespace EnviosMails
         public FormSendMail()
         {
             InitializeComponent();
-
-            //Oculta la pestaña Iniciar Sesion (tabPage1) del Tabcontrol
-            tabPage1.Parent = null;
         }
 
         private void btnSearchFile_Click(object sender, EventArgs e)
         {
-            //Se instancia la Clase SearchFile
+            //Se instancia la Clase SearchFilel
             SearchFile searchFile = new SearchFile();
             // se hace pase de parametro de clase SearchFile(dataGrid) a dataDetails
             searchFile.SearchFiles(dataDetails);
-        }
-        private void link_Cancel(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            txtUser2.Text = "";
-            txtPassword2.Text = "";
-            errorProvider.Clear();
-            //Cancela-Cierra tabPage1 inicio de Sesion
-            tabControl1.TabPages.Remove(tabPage1);
-        }
-        public void btnSave_Click(object sender, EventArgs e)
-        {
-            //    //Se validan que no esten null los txt
+        }          
 
-            //    if (txtUser2.Text == string.Empty)
-            //    {               
-            //        errorProvider.SetError(txtUser2, "Ingrese Usuario");                                              
-            //    }
-            //    else
-            //    {
-            //        emailBody.mailUser = txtUser2.Text ;
-            //        errorProvider.Clear();                
-            //    }
-
-            //    if (txtPassword2.Text == string.Empty)
-            //    {
-            //        errorProvider.SetError(txtPassword2, "Ingrese Contraseña");                                             
-            //    }
-            //    else
-            //    {          
-            //        emailBody.mailPass = txtPassword2.Text;
-            //        errorProvider.Clear();
-            //    }
-
-            //    if (txtUser2.Text != string.Empty && txtPassword2.Text != string.Empty)
-            //    {
-            //        tabControl1.TabPages.Remove(tabPage1);
-            //        errorProvider.Clear();
-            //        txtUser2.Text = "";
-            //        txtPassword2.Text = "";
-            //    }  
-        }
-
-        public class groupByData
+        //public class groupByData
+        //{
+        //    public string nis { get; set; }
+        //    public string abiertoPor { get; set; }
+        //    public string idInteraccion { get; set; }
+        //    public string titulo { get; set; }
+        //    public string mailPersonal { get; set; }
+        //    public string correo { get; set; }
+        //}
+        public void btnSend_Click(object sender, EventArgs e)
         {
-            public string nis { get; set; }
-            public string abiertoPor { get; set; }
-            public string idInteraccion { get; set; }
-            public string titulo { get; set; }
-        }
-        private void btnSend_Click(object sender, EventArgs e)
-        {
+            ClearErrorProvider();
             //Se validan que no esten null los txt
             if (txtUser.Text == string.Empty)
             {
@@ -82,7 +42,7 @@ namespace EnviosMails
             else
             {
                 emailBody.mailUser = txtUser.Text;
-                errorProvider.Clear();
+               
             }
             //Se validan que no esten null los txt
             if (txtPassword.Text == string.Empty)
@@ -92,7 +52,7 @@ namespace EnviosMails
             else
             {
                 emailBody.mailPass = txtPassword.Text;
-                //errorProvider.Clear();
+                
             }
 
             emailBody.mailCc = txtCC.Text;
@@ -110,50 +70,121 @@ namespace EnviosMails
                     //Se instancia Clase SendMail
                     SendMail send = new SendMail();
 
-                    //********************************codigo de juan*******************
-                    var groupByDataGrid = new List<groupByData>();
+                    //var groupByDataGrid = new List<groupByData>();
 
-                    for (int i = 0; i < dataDetails.RowCount; i++)
+
+                    List<DataGridViewRow> rows = (from item in dataDetails.Rows.Cast<DataGridViewRow>()
+                                                  select item).ToList<DataGridViewRow>();
+
+
+                    var rowsEmail= (from item in dataDetails.Rows.Cast<DataGridViewRow>()
+                                    select new
+                                    {
+                                        email = item.Cells[0].Value.ToString(),
+                                        abiertoPor = item.Cells[1].Value.ToString(),
+                                        idInteraccion = item.Cells[2].Value.ToString(),
+                                        titulo = item.Cells[3].Value.ToString(),
+                                        emailPersonal = item.Cells[4].Value.ToString(),
+                                    }).GroupBy(g => g.email).ToArray();
+
+
+
+                    //foreach (var item in rowsEmail[0])
+                    //{
+                    //    emailBody.To = item.email + "@gmail.com";
+                    //    emailBody.OpenBy = item.abiertoPor;
+                    //    emailBody.groupDescriptions.Add(new groupDescriptions
+                    //    {
+                    //        IdInteraction = item.idInteraccion,
+                    //        Title = item.titulo
+                    //    });
+
+                    //}
+                    //int index = 0;
+
+                    //foreach (var item in rowsEmail[index])
+                    //{
+                    //    emailBody.To = item.email + "@gmail.com";
+                    //    emailBody.OpenBy = item.abiertoPor;
+                    //    emailBody.groupDescriptions.Add(new groupDescriptions
+                    //    {
+                    //        IdInteraction = item.idInteraccion,
+                    //        Title = item.titulo
+                    //    });
+                    //    index++;
+                    //}
+
+
+                    for (int i = 0; i < rowsEmail.Length; i++)
                     {
-                        groupByDataGrid.Add(new groupByData
+                        foreach (var item in rowsEmail[i])
                         {
-                            nis = dataDetails.Rows[i].Cells[0].Value.ToString(),
-                            abiertoPor = dataDetails.Rows[i].Cells[1].Value.ToString(),
-                            idInteraccion = dataDetails.Rows[i].Cells[2].Value.ToString(),
-                            titulo = dataDetails.Rows[i].Cells[3].Value.ToString(),
-                        });
-                    }
-
-                    var groupByNis = from data in groupByDataGrid
-                                     group data by data.nis into newGroup
-                                     orderby newGroup.Key
-                                     select newGroup;
-
-                    foreach (var itemGroupNis in groupByNis)
-                    {
-                        var dataSendToEmail = new SendMail();
-                        foreach (var informationToSend in itemGroupNis)
-                        {
-                            emailBody.To = informationToSend.nis + "@gmail.com";
-                            emailBody.OpenBy = informationToSend.abiertoPor;
                             emailBody.groupDescriptions.Add(new groupDescriptions
                             {
-                                IdInteraction = informationToSend.idInteraccion,
-                                Title = informationToSend.titulo
+                                IdInteraction = item.idInteraccion,
+                                Title = item.titulo,
                             });
                         }
-                        //send.sendMail(btnSend, emailBody);
 
-                        //********************************codigo de juan*******************
+                        emailBody.To = rowsEmail[i].Select(s=>s.email).FirstOrDefault() + "@gmail.com";
+                        emailBody.OpenBy = rowsEmail[i].Select(s => s.abiertoPor).FirstOrDefault();
+                        send.sendMail(btnSend, emailBody);
+                        emailBody.groupDescriptions.Clear();
                     }
-                    //emailBody = null;
-                    txtUser.Text = string.Empty;
-                    txtPassword.Text = string.Empty;
-                    errorProvider.Clear();
-                }
-                
 
-            }
+                    //}
+                    //var pepito = rows[0].Cells[0].Value.ToString();
+
+                    //var pupu = (from data in rows 
+                    //           group data by data.Cells into newGroup 
+                    //           select newGroup.Key).ToList();
+
+                    //for (int i = 0; i < rowsPUPU.Count; i++)
+                    //{
+                    //    rowsPUPU[0].
+                    //}
+
+
+                    //}
+
+                    //foreach (DataGridViewRow row in dataDetails.Rows)
+                    //{
+                    //    List<DataGridViewCell> data = (from item in row.Cells.Cast<DataGridViewCell>()                                                       
+                    //                                   select item).ToList<DataGridViewCell>();
+                    //}
+
+
+
+                    //var groupByNis = from data in groupByDataGrid
+                    //                 group data by data.correo into newGroup
+                    //                 orderby newGroup.Key
+                    //                 select newGroup;
+
+
+
+                    //send.sendMail(btnSend, emailBody);
+                }
+
+                // Se blanquean los datos
+                //txtUser.Text = string.Empty;
+                //txtPassword.Text = string.Empty;
+                //dataDetails.DataSource = null;
+                //errorProvider2.Clear();
+
+            }   
+
+
+               
         }
+
+        private void ClearErrorProvider()
+        {
+            errorProvider.SetError(txtUser, "");
+            errorProvider.SetError(txtPassword, "");
+            errorProvider.SetError(dataDetails, null);
+            
+        }
+
+
     }
 }

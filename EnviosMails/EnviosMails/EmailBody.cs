@@ -16,7 +16,9 @@ namespace EnviosMails
         public string IdInteraction { get; set; }
         public string Title { get; set; }
         public string mailBody { get; set; }
-
+        public string personalEmail { get; set; }
+        public string email { get; set; }
+        public string location { get; set; }
 
 
         public List<groupDescriptions> groupDescriptions { get; set; } = new List<groupDescriptions>();
