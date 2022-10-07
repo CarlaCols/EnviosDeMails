@@ -80,7 +80,7 @@ namespace EnviosMails
                 clientSmtp.Connect(server, port, MailKit.Security.SecureSocketOptions.StartTls);
                 clientSmtp.Authenticate(emailBody.mailUser, emailBody.mailPass);
                 clientSmtp.Send(message);
-                MessageBox.Show("Mensajes Enviado");
+                //MessageBox.Show("Mensajes Enviado");
             }
             catch (Exception ex)
             {
