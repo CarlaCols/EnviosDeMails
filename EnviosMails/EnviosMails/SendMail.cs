@@ -48,7 +48,7 @@ namespace EnviosMails
             {
                 msg += @"<tr>" +
                     "<td align = center > " + emailBody.To + " </ td > " +
-                    "<td align=center>" + emailBody.OpenBy + "</td>" +
+                    "<td align=center>" + item.OpenBy + "</td>" +
                     "<td align=center>" + item.IdInteraction+ "</td> " +
                     "<td align=center>" + item.Title + "</td> " +
                     "</tr>";

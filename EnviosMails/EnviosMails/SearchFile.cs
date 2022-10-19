@@ -62,13 +62,12 @@ namespace EnviosMails
                     //dataGrid.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
 
                     dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                    foreach (DataGridViewColumn column in dataGrid.Columns)//deshabilitar el click y  reordenamiento por columnas
+                    foreach (DataGridViewColumn column in dataGrid.Columns)//deshabilita el click y  reordenamiento por columnas
                     {
                         column.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
 
-
-
+ 
 
 
                 }
