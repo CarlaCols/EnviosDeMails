@@ -27,27 +27,26 @@ namespace EnviosMails
        
         public void btnSend_Click(object sender, EventArgs e)
         {
-            //ClearErrorProvider();
+            ClearErrorProvider();
 
-            //Se validan que no esten null los txt
-            if (txtUser.Text == string.Empty || txtUser.Text != @"^[^@\s]+@[^@\s]+\.[^@\s]+$")
-            {
-                errorProvider.SetError(txtUser, "Ingrese un Mail valido");
-            }
-            else
+            //Se validan que no este null el txt y que sea un mail valido          
+            if (txtUser.Text != string.Empty && Regex.IsMatch(txtUser.Text, @"^([0-9a-zA-Z\S]{5,})+@([a-zA-Z]{5,})+\.([a-zA-Z\.]{2,6})$"))
             {
                 emailBody.mailUser = txtUser.Text;
-
             }
+            else
+            {                
+                errorProvider.SetError(txtUser, "Ingrese un Mail valido");
+            }
+
             //Se validan que no esten null los txt
-            if (txtPassword.Text == string.Empty)
+            if (txtPassword.Text != string.Empty && Regex.IsMatch(txtPassword.Text, @"^([0-9a-zA-Z\S]{8,})$"))
             {
-                errorProvider.SetError(txtPassword, "Ingrese Contraseña");
+                emailBody.mailPass = txtPassword.Text;               
             }
             else
             {
-                emailBody.mailPass = txtPassword.Text;
-                
+                errorProvider.SetError(txtPassword, "Ingrese Contraseña");
             }
 
             emailBody.mailCc = txtCC.Text;
@@ -65,35 +64,7 @@ namespace EnviosMails
                 {
                     //Se instancia Clase SendMail
                     SendMail send = new SendMail();
- 
-                    //var Prueba2 = dataDetails.Columns[0].HeaderText.ToString();
-                    //{
-                    //}
-
-                    //List<DataGridViewRow> rows = (from item in dataDetails.Rows.Cast<DataGridViewRow>()
-                    //                              select item).ToList<DataGridViewRow>();
-
-                    //var rows = (from item in dataDetails.Rows.Cast<DataGridViewRow>()
-                    //           select new
-                    //           {
-                    //            email = (
-                    //               new Func<string>(
-                    //               () =>
-                    //               {
-                    //               if (new[] { "O3503", "O3504", "O3505", "O8195" }.Any(c => item.Cells[0].Value.ToString().Contains(c)))
-
-                    //                  return item.Cells[4].Value.ToString();
-                    //               else
-                    //               return item.Cells[0].Value.ToString() + "@gmail.com";
-                    //               }
-                    //               )()
-                    //               ),
-                    //               abiertoPor = item.Cells[1].Value.ToString(),
-                    //               idInteraccion = item.Cells[2].Value.ToString(),
-                    //               titulo = item.Cells[3].Value.ToString(),
-                    //               emailPersonal = item.Cells[4].Value.ToString(),
-                    //               }).GroupBy(g => g.email).ToList();
-
+                   
 
                     var rows = (from item in dataDetails.Rows.Cast<DataGridViewRow>()
                                 select new
@@ -136,23 +107,20 @@ namespace EnviosMails
                     }
 
                     MessageBox.Show("Mensajes Enviados");
-
-                }
-
-                //Blanquea los datos
-                txtUser.Text = string.Empty;
-                txtPassword.Text = string.Empty;
-                dataDetails.DataSource = null;
-
-            }   
-               
+                    //Blanquea los datos
+                    txtUser.Text = string.Empty;
+                    txtPassword.Text = string.Empty;
+                    dataDetails.DataSource = null;
+                }              
+            }
+           
         }
-        // Blanquea los errorProvider
+        //Blanquea los errorProvider
         private void ClearErrorProvider()
         {
             errorProvider.SetError(txtUser, "");
             errorProvider.SetError(txtPassword, "");
-            errorProvider.SetError(dataDetails, null);            
+            errorProvider.SetError(dataDetails, null);
         }
     }
 }
